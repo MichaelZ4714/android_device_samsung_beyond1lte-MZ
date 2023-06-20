@@ -1,4 +1,5 @@
 # Android fstab file.
+# Michael Zöllner, added userdata, keydata, keyrefuge, keystorage
 
 # mount point  fstype device                                   device2              flags
 /system_root    ext4   /dev/block/platform/13d60000.ufs/by-name/system        flags=backup=0;display="System"
@@ -24,3 +25,8 @@
 /external_sd    vfat   /dev/block/mmcblk0p1 /dev/block/mmcblk0                flags=display="Micro SDcard";storage;wipeingui;removable
 /usb-otg        vfat   /dev/block/sdf1 /dev/block/sdf                         flags=display="USB-OTG";storage;wipeingui;removable
 
+
+/userdata       emmc   /dev/block/platform/13d60000.ufs/by-name/userdata      flags=backup=1;flashimg;display="Userdata"
+/keydata        emmc   /dev/block/platform/13d60000.ufs/by-name/keydata       flags=backup=1;flashimg;display="Keydata"
+/keyrefuge      emmc   /dev/block/platform/13d60000.ufs/by-name/keyrefuge     flags=backup=1;flashimg;display="Keyrefuge"
+/keystorage     emmc   /dev/block/platform/13d60000.ufs/by-name/keystorage    flags=backup=1;flashimg;display="Keystorage"
