@@ -7,6 +7,10 @@
 # Ian Macdonald's Samsung multidisabler, furtherly
 # adapted for our specific needs with precious help
 # from IvanMeler and AnanJaser1211
+#
+#  Michael Zöllner - don't do Step 1
+#  nuking encryption has the result that TWRP cannot be installed on systems with encrypted userdata,
+#  the system remains bootable when encryption is kept
 
 # Step 0 - Mount system/vendor and setenforce 0 {just in case}
 sleep 5
@@ -16,12 +20,12 @@ mount -o remount,rw /system_root
 mount /vendor
 mount -o remount,rw /vendor
 
-# Step 1 - Entirely nuke encryption
-for i in /vendor/etc/fstab.exynos*; do
-    if [ -f $i ]; then
-        sed -i -e 's/^\([^#].*\),fileencryption=[^,]*\(.*\)$/# &\n\1\2/g' $i
-    fi
-done
+## Step 1 - Entirely nuke encryption
+#for i in /vendor/etc/fstab.exynos*; do
+#    if [ -f $i ]; then
+#        sed -i -e 's/^\([^#].*\),fileencryption=[^,]*\(.*\)$/# &\n\1\2/g' $i
+#    fi
+#done
 
 # Step 2 - Nuke manifest lines for the given combo of trash services
 combo=(vaultkeeper proca wsm)
